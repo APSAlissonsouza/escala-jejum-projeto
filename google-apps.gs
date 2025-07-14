@@ -7,7 +7,7 @@ function doPost(e) {
     sheet.appendRow(["Cadastro", new Date(), e.parameter.nome, e.parameter.email, e.parameter.telefone, e.parameter.igreja]);
     return ContentService.createTextOutput("Cadastro OK");
   } else if (tipo === "escala") {
-    sheet.appendRow(["Escala", new Date(), e.parameter.email, e.parameter.dias]);
+    sheet.appendRow(["Escala", new Date(), e.parameter.email, e.parameter.data, e.parameter.turno]);
     return ContentService.createTextOutput("Escala OK");
   }
 }

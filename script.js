@@ -23,13 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formEscala) {
         formEscala.addEventListener('submit', e => {
             e.preventDefault();
-            const email = document.getElementById('emailEscala').value;
-            const checkboxes = document.querySelectorAll('input[name="escala"]:checked');
-            const diasSelecionados = Array.from(checkboxes).map(cb => cb.value).join(', ');
             const dados = {
                 tipo: 'escala',
-                email,
-                dias: diasSelecionados
+                email: document.getElementById('emailEscala').value,
+                data: document.getElementById('dataJejum').value,
+                turno: document.getElementById('turnoJejum').value
             };
             fetch(scriptURL, { method: 'POST', body: new URLSearchParams(dados)})
                 .then(() => alert("Escala salva!"))
