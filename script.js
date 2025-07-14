@@ -1,5 +1,5 @@
 // Substitua a URL abaixo pela URL do seu Apps Script do Google
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyaGsFxGSSivWcK_uk01Lj9NGFZINnsECIQ6XvkIubOfHoNtFoNxEGN5ArlJjjGfzlj/exec';
+const scriptURL = "https://script.google.com/macros/s/AKfycbyaGsFxGSSivWcK_uk01Lj9NGFZINnsECIQ6XvkIubOfHoNtFoNxEGN5ArlJjjGfzlj/exec";
 
 document.addEventListener('DOMContentLoaded', () => {
     const formCadastro = document.getElementById('formCadastro');
