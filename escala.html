@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Escala de Jejum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Minha Escala de Jejum</h2>
+        <form id="formEscala">
+            <div id="dias">
+                <!-- Dias e horários -->
+            </div>
+            <input type="email" placeholder="Seu email (login)" id="emailEscala" required>
+            <button type="submit">Salvar Escala</button>
+        </form>
+        <p><a href="admin.html">Ver Escala Completa</a></p>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const dias = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
+            const turnos = ['Manhã', 'Tarde', 'Noite'];
+            const container = document.getElementById("dias");
+
+            dias.forEach(dia => {
+                const group = document.createElement("div");
+                group.innerHTML = `<h4>${dia}</h4>`;
+                turnos.forEach(turno => {
+                    const id = `${dia}-${turno}`;
+                    group.innerHTML += `<label><input type="checkbox" name="escala" value="${id}">${turno}</label>`;
+                });
+                container.appendChild(group);
+            });
+        });
+    </script>
+</body>
+</html>
