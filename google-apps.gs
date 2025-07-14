@@ -1,5 +1,5 @@
 function doPost(e) {
-  const ss = SpreadsheetApp.openById("https://docs.google.com/spreadsheets/d/1gJLcHDlGajToo8RynmJ9Ya42TyYUz2vLPaH1_7JtQI8/edit?gid=0#gid=0");
+  const ss = SpreadsheetApp.openById("https://script.google.com/macros/s/AKfycbzlrZ7NpCZmULnpcjPf0PpLoOjkaZgoYoZCpwMd9ZjBD8-_HnycJc9i-jVRVHrJETp7/exec");
   const sheet = ss.getSheetByName("Escala") || ss.insertSheet("Escala");
   const tipo = e.parameter.tipo;
 
@@ -13,7 +13,7 @@ function doPost(e) {
 }
 
 function doGet(e) {
-  const ss = SpreadsheetApp.openById("https://docs.google.com/spreadsheets/d/1gJLcHDlGajToo8RynmJ9Ya42TyYUz2vLPaH1_7JtQI8/edit?gid=0#gid=0");
+  const ss = SpreadsheetApp.openById("https://script.google.com/macros/s/AKfycbzlrZ7NpCZmULnpcjPf0PpLoOjkaZgoYoZCpwMd9ZjBD8-_HnycJc9i-jVRVHrJETp7/exec");
   const sheet = ss.getSheetByName("Escala");
   const data = sheet.getDataRange().getValues();
   return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
