@@ -67,10 +67,9 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbyMxL1SQXurqCfn3sYkSR
         const tabela = data.map(r => r.join(' | ')).join('\n');
         document.getElementById('tabelaEscala').innerHTML = `<pre>${tabela}</pre>`;
       });
-  }
-});
+  };
 
-function sair() {
+  function sair() {
   localStorage.removeItem('emailLogado');
   window.location.href = 'login.html';
 }
