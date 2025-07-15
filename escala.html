@@ -1,31 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Escala de Jejum</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Cadastro de Escala</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h2>Minha Escala de Jejum</h2>
-        <form id="formEscala">
-            <label for="dataJejum">Data do Jejum:</label>
-            <input type="date" id="dataJejum" required>
-
-            <label for="turnoJejum">Turno:</label>
-            <select id="turnoJejum" required>
-                <option value="">Selecione...</option>
-                <option value="Manhã">Manhã</option>
-                <option value="Tarde">Tarde</option>
-                <option value="Noite">Noite</option>
-            </select>
-
-            <input type="email" placeholder="Seu email (login)" id="emailEscala" required>
-            <button type="submit">Salvar Escala</button>
-        </form>
-        <p><a href="admin.html">Ver Escala Completa</a></p>
-    </div>
-    <script src="script.js"></script>
+  <div class="container">
+    <h1>Escala de Jejum</h1>
+    <form id="formEscala">
+      <input type="date" name="dataJejum" required>
+      <select name="turnoJejum" required>
+        <option value="">Escolha o turno</option>
+        <option value="Manhã">Manhã</option>
+        <option value="Tarde">Tarde</option>
+        <option value="Noite">Noite</option>
+      </select>
+      <button type="submit">Salvar Escala</button>
+    </form>
+    <button onclick="sair()">Sair</button>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
