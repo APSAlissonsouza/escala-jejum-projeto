@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwwBwoA1Ih4oUweepXquw3j9JXexg9lI2_s48UWD-uBTHEYpDpSRRjflqcQjl3TidBD/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzyGBrEvsIquajAtertiyS5VuXO5-KhRKpgDfT-BOwSiAkY5vBK5MNhIx4Q7FBhe326/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
   const formCadastro = document.getElementById('formCadastro');
