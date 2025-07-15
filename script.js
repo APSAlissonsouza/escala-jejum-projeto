@@ -1,6 +1,6 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyMxL1SQXurqCfn3sYkSRfxvDZAGYzUdoEj8SgLoAdby7H1UT2SAZn3659n0dU_7svX/exec';
 
-  const formCadastro = document.getElementById('formCadastro');
+const formCadastro = document.getElementById('formCadastro');
   if (formCadastro) {
     formCadastro.addEventListener('submit', e => {
       e.preventDefault();
