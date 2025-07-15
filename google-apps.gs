@@ -18,7 +18,7 @@ function doPost(e) {
     return ContentService.createTextOutput("Cadastro OK");
   }
 
-  if (tipo === "escala") {
+  if (tipo === "Escala") {
     // Agendamento de jejum: salva email, data e turno
     sheet.appendRow([
       "Escala",
