@@ -3,13 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
- apiKey: "AIzaSyA8K61X2AYI0ltDGb9-qyJdk0FvLv7ed7g",
-  authDomain: "escalajejumigreja.firebaseapp.com",
-  projectId: "escalajejumigreja",
-  storageBucket: "escalajejumigreja.firebasestorage.app",
-  messagingSenderId: "529100712585",
-  appId: "1:529100712585:web:5ed775e802d49293573458",
-  measurementId: "G-SH60PLSGC7"
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_DOMINIO.firebaseapp.com",
+  projectId: "SEU_PROJETO_ID",
+  storageBucket: "SEU_BUCKET.appspot.com",
+  messagingSenderId: "SEU_SENDER_ID",
+  appId: "SEU_APP_ID"
 };
 
 const app = initializeApp(firebaseConfig);
