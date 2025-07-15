@@ -26,4 +26,4 @@ function escalar() {
     .then(msg => alert(msg));
 }
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbx-Wv5bwWBzd4OH9CCZZHHzOt6hrVp9UBSeWPYtZoIalMwuqfKCYNJ0_mo1TyBvW9r5/exec";
+const scriptURL = "URL_DO_SEU_SCRIPT_EXECUTÁVEL";
