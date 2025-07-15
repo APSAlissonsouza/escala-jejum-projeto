@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxog93JRJFWV52hRa7scLbh30f7jPIfSL_Y-ADLDww40OxkI9p8zH7iEg9Hn-5HMSU-/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbx-Wv5bwWBzd4OH9CCZZHHzOt6hrVp9UBSeWPYtZoIalMwuqfKCYNJ0_mo1TyBvW9r5/exec';
 
 // Função para enviar dados via POST
 async function enviarDados(dados) {
