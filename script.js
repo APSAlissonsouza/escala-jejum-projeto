@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxJTeLhwco-hgfEl2eYKU6TQS1ff2AGBwLJ0GddltsukquKIqVi-ywuQLfB7JN3PjNb/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwChfra_qiB1YrgsyH1uRcPPtzW3-NZqUTNK34yHRsW2dt--lQtpJyO7X2Fl0jaOhKB/exec';
 document.addEventListener('DOMContentLoaded', () => {
   const formCadastro = document.getElementById('formCadastro');
   if (formCadastro) {
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => {
           const users = data.filter(r => r[0] === "Cadastro");
-          const user = users.find(u => u[3] === email && u[4] === senha);
+          const user = users.find(u => u[4] === email && u[5] === senha);
           if (user) {
             localStorage.setItem('emailLogado', email);
             window.location.href = 'escala.html';
