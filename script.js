@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => {
           const users = data.filter(r => r[0] === "Cadastro");
-          const user = users.find(u => u[4] === email && u[5] === senha);
+          const user = users.find(u => u[3] === email && u[4] === senha);
           if (user) {
             localStorage.setItem('emailLogado', email);
             window.location.href = 'escala.html';
