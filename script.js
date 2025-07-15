@@ -2,6 +2,9 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbzlrZ7NpCZmULnpcjPf0P
 
 document.addEventListener('DOMContentLoaded', () => {
     const formCadastro = document.getElementById('formCadastro');
+    const formLogin = document.getElementById('formLogin');
+    const formEscala = document.getElementById('formEscala');
+
     if (formCadastro) {
         formCadastro.addEventListener('submit', e => {
             e.preventDefault();
@@ -19,19 +22,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const formEscala = document.getElementById('formEscala');
+    if (formLogin) {
+        formLogin.addEventListener('submit', e => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const senha = document.getElementById('loginSenha').value.trim();
+
+            fetch(scriptURL + '?tipo=ver')
+                .then(res => res.json())
+                .then(data => {
+                    const usuario = data.find(u => u.email === email && u.senha === senha);
+                    if (usuario) {
+                        localStorage.setItem('usuarioLogado', JSON.stringify({
+                            email: usuario.email,
+                            nome: usuario.nome
+                        }));
+                        alert("Login realizado com sucesso!");
+                        window.location.href = "escala.html";
+                    } else {
+                        alert("Email ou senha inválidos.");
+                    }
+                })
+                .catch(err => alert("Erro ao validar login: " + err));
+        });
+    }
+
     if (formEscala) {
-        if (!localStorage.getItem('emailLogado')) {
-            window.location.href = 'login.html';
+        const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+        if (!usuarioLogado) {
+            alert("Você precisa fazer login para acessar essa página.");
+            window.location.href = "login.html";
+            return;
         }
 
         formEscala.addEventListener('submit', e => {
             e.preventDefault();
+            const email = usuarioLogado.email;
+            const checkboxes = document.querySelectorAll('input[name="escala"]:checked');
+            const diasSelecionados = Array.from(checkboxes).map(cb => cb.value).join(', ');
             const dados = {
                 tipo: 'escala',
-                email: localStorage.getItem('emailLogado'),
-                data: document.getElementById('dataJejum').value,
-                turno: document.getElementById('turnoJejum').value
+                email,
+                dias: diasSelecionados
             };
             fetch(scriptURL, { method: 'POST', body: new URLSearchParams(dados)})
                 .then(() => alert("Escala salva!"))
@@ -39,44 +71,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const formLogin = document.getElementById('formLogin');
-    if (formLogin) {
-        formLogin.addEventListener('submit', e => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const senha = document.getElementById('loginSenha').value;
-
-            fetch(scriptURL + '?tipo=ver')
-                .then(res => res.json())
-                .then(data => {
-                    const usuarios = data.filter(l => l[0] === 'Cadastro');
-                    const achou = usuarios.find(u => u[3] === email && u[4] === senha);
-                    if (achou) {
-                        localStorage.setItem('emailLogado', email);
-                        alert("Login bem-sucedido!");
-                        window.location.href = 'escala.html';
-                    } else {
-                        alert("Email ou senha incorretos!");
-                    }
-                })
-                .catch(() => alert("Erro ao tentar login."));
-        });
-    }
-
-    if (document.getElementById('tabelaEscala')) {
-        if (!localStorage.getItem('emailLogado')) {
-            window.location.href = 'login.html';
+    const isAdmin = document.getElementById('tabelaEscala');
+    if (isAdmin) {
+        const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+        if (!usuarioLogado) {
+            alert("Você precisa fazer login para acessar essa página.");
+            window.location.href = "login.html";
+            return;
         }
+
         fetch(scriptURL + '?tipo=ver')
             .then(res => res.json())
             .then(data => {
-                const container = document.getElementById('tabelaEscala');
-                container.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                const tabela = gerarTabela(data);
+                document.getElementById('tabelaEscala').innerHTML = tabela;
             });
     }
 });
 
-function sair() {
-    localStorage.removeItem('emailLogado');
-    window.location.href = 'login.html';
+function gerarTabela(data) {
+    if (!Array.isArray(data)) return "Nenhum dado disponível.";
+    let html = "<table><tr><th>Nome</th><th>Email</th><th>Dias de Jejum</th></tr>";
+    data.forEach(item => {
+        if (item.dias) {
+            html += `<tr><td>${item.nome || ''}</td><td>${item.email}</td><td>${item.dias}</td></tr>`;
+        }
+    });
+    html += "</table>";
+    return html;
+}
+
+function logout() {
+    localStorage.removeItem('usuarioLogado');
+    window.location.href = "login.html";
 }
